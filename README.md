@@ -1,4 +1,5 @@
 
+
 ### STEP 1.Run a mysql and redis docker
 
 ### 1.1 **MYSQL is requiered
