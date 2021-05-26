@@ -1,5 +1,4 @@
 
-
 ### STEP 1.Run a mysql and redis docker
 
 ### 1.1 **MYSQL is requiered
@@ -15,10 +14,7 @@ mysql> exit
 ```
 
 ### 1.2 **)Redis is used for retrying
-
 sudo docker run -d --name redis -p 6379:6379 redis
-
-
 
 ### STEP 2.Checkout the project in your local directory and go to the folder where the  pom and dockerfile is located.
 
@@ -29,7 +25,6 @@ sudo docker run -it --rm -v "$PWD":/app -w /app maven:3-openjdk-11 mvn clean ins
 ### STEP 4. Delete the existing container
 ```sh
 sudo docker stop modustest-stg && sudo docker rm modustest-stg
-
 
 ### STEP 5. Build the image
 ```sh
@@ -44,7 +39,7 @@ sudo docker run -d \
     --restart always \
     modustest:0.0.1-SNAPSHOT
 
-***Another option for running the project instead doing step 2 to 6 is is to pull the image from my dockerhub repository and then run it.
+###. Another option for running the project instead doing step 2 to 6 is is to pull the image from my dockerhub repository and then run it.
 
 sudo docker pull 22955721/modustest-dev:latest
 sudo docker run -p 9091:8080 -t modustest:0.0.1-SNAPSHOT
