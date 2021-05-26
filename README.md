@@ -1,6 +1,6 @@
 # STEP 1.Run a mysql and redis docker
 
-## 1.1 **MYSQL is requiered
+## MYSQL is requiered
 
 Create  db using docker or if you have installed a mysql onpremise create a new database modusbox:
 ```
@@ -12,12 +12,13 @@ mysql> create database modusbox;
 mysql> exit
 ```
 
-## 1.2 **)Redis is used for retrying
+## Redis is used for retrying
+
 sudo docker run -d --name redis -p 6379:6379 redis
 
 # STEP 2.Checkout the project in your local directory and go to the folder where the  pom and dockerfile is located.
 
-#STEP 3. Install the proyect using maven
+# STEP 3. Install the proyect using maven
 
 sudo docker run -it --rm -v "$PWD":/app -w /app maven:3-openjdk-11 mvn clean install
 
@@ -30,7 +31,7 @@ sudo docker stop modustest-stg && sudo docker rm modustest-stg
 sudo docker build -t modustest:0.0.1-SNAPSHOT .
 ```
 
-#STEP 6. Run the aplication
+# STEP 6. Run the aplication
 
 sudo docker run -d \
     --name modustest-stg \
