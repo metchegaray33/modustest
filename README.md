@@ -19,19 +19,21 @@ mysql> exit
 sudo docker run -d --name redis -p 6379:6379 redis
 
 
-
 ### STEP 2.Checkout the project in your local directory and go to the folder where the  pom and dockerfile is located.
 
 ### STEP 3. Install the proyect using maven
+
 ```sh
 sudo docker run -it --rm -v "$PWD":/app -w /app maven:3-openjdk-11 mvn clean install
 
 ### STEP 4. Delete the existing container
+
 ```sh
 sudo docker stop modustest-stg && sudo docker rm modustest-stg
 
 
 ### STEP 5. Build the image
+
 ```sh
 sudo docker build -t modustest:0.0.1-SNAPSHOT .
 ```
