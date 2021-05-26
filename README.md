@@ -44,7 +44,7 @@ sudo docker run -d \
     --restart always \
     modustest:0.0.1-SNAPSHOT
 
-***Another option for running the project instead doing step 2 to 6 is is to pull the image from my dockerhub repository and then run it.
+### Another option for running the project instead doing step 2 to 6 is is to pull the image from my dockerhub repository and then run it.
 
 sudo docker pull 22955721/modustest-dev:latest
 sudo docker run -p 9091:8080 -t modustest:0.0.1-SNAPSHOT
