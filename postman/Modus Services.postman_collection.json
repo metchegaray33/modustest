@@ -1,0 +1,404 @@
+{
+	"info": {
+		"_postman_id": "5c541c4b-a2c9-49f6-9a4a-b8affaa8a7e9",
+		"name": "Modus Services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "findSupplierById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/suppliers/findById?supplierId=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"suppliers",
+						"findById"
+					],
+					"query": [
+						{
+							"key": "supplierId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllFeriado",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/feriados/findAll",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"feriados",
+						"findAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllSuppliers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/suppliers/findAll",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"suppliers",
+						"findAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteFeriado",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/feriados/delete/1000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"feriados",
+						"delete",
+						"1000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteSupplier",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/suppliers/delete/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"suppliers",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addFeriado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n  \"fecha\": \"2020-09-25\",\r\n  \"descripcion\": \"feriado de mayo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/feriados/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"feriados",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addTransaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"supplier\": {\r\n\t\t\t\t\"id\": 2\t\t\t\t\r\n\t\t\t},\r\n            \r\n    \"transactionId\": \"1\",\r\n    \"fecha\": \"2020-09-25\",\r\n    \"hora\": \"11:30:00\",\r\n    \"content\": \"feriado de mayo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/transactions/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"transactions",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testStore",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "b5e91a5d-42b8-465c-961c-4edea139e0f1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"supplier\": {\r\n\t\t\t\t\"id\": 2\t\t\t\t\r\n\t\t\t},\r\n            \r\n    \"transactionId\": \"88\",\r\n    \"fecha\": \"2020-09-25\",\r\n    \"hora\": \"11:30:00\",\r\n    \"content\": \"feriado de mayo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/token/test",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"token",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "processTransactions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "3464d99f-ea3b-4362-82b1-d8a594dc1d59",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n\t{\t\r\n          \"transactionId\": \"55\",\r\n\t\t\t \"fecha\": \"2020-09-25\",\r\n              \"hora\": \"11:30:00\",\r\n              \"content\": \"feriado de mayo\",\r\n\t\t      \"supplier\": {\r\n\t\t\t\t\"id\": 2\t\t\t\t\r\n\t\t\t }\r\n   },\r\n   {\t\r\n          \r\n             \"transactionId\": \"77\",\r\n\t\t\t \"fecha\": \"2020-09-25\",\r\n              \"hora\": \"11:30:00\",\r\n              \"content\": \"feriado de mayo\",\r\n\t\t      \"supplier\": {\r\n\t\t\t\t\"id\": 1\t\t\t\r\n\t\t\t }\r\n   }\r\n]\t\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/transactions/process",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"transactions",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "generateToken",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "3464d99f-ea3b-4362-82b1-d8a594dc1d59",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"supplier\": {\r\n\t\t\t\t\"id\": 2\t\t\t\t\r\n\t\t\t},\r\n            \r\n    \"transactionId\": \"88\",\r\n    \"fecha\": \"2020-09-25\",\r\n    \"hora\": \"11:30:00\",\r\n    \"content\": \"feriado de mayo\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/token/token",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"token",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "processTransactionsOne",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "9faf5ead-1449-4085-9d4e-2cb889c1f150"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"supplier\": {\r\n\t\t\t\t\"id\": 1\t\t\t\t\r\n\t\t\t},\r\n            \r\n    \"transactionId\": \"88\",\r\n    \"fecha\": \"2020-09-25\",\r\n    \"hora\": \"11:30:00\",\r\n    \"content\": \"feriado de mayo\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/transactions/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"transactions",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addSupplier",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n  \"name\": \"NETFLIX 2\",\r\n  \"address\": \"WASHINGTON STREET 1\",\r\n  \"contact\": 121\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/suppliers/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"suppliers",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateFeriado",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"id\": 1001,   \r\n  \"fecha\": \"2020-09-25\",\r\n  \"descripcion\": \"feriado de mayo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/feriados/update",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"feriados",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateSupplier",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{      \r\n  \"id\": \"2\",\r\n  \"name\": \"NETFLIX 32\",\r\n  \"address\": \"WASHINGTON STREET 1\",\r\n  \"contact\": 121\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/suppliers/update",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"suppliers",
+						"update"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
