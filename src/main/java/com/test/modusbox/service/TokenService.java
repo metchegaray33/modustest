@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class TokenUtilService {
+public class TokenService {
 
     @Autowired
     private StringRedisTemplate redisTemplate;
@@ -39,17 +39,6 @@ public class TokenUtilService {
         String key = IDEMPOTENT_TOKEN_PREFIX + token;
         //Store "Token" to "Redis" and set the expiration time to 5 minutes
         redisTemplate.opsForValue().set(key, transactionDTO.getTransactionId(), 5, TimeUnit.MINUTES);
-        //Return to 'Token'
-        return key;
-    }
-
-    public String generateToken(String value) {
-        //Instantiate to generate the ﹣ ID ﹣ tool object
-        String token = UUID.randomUUID().toString();
-        //Set the Key stored in "Redis"
-        String key = IDEMPOTENT_TOKEN_PREFIX + token;
-        //Store "Token" to "Redis" and set the expiration time to 5 minutes
-        redisTemplate.opsForValue().set(key, value, 5, TimeUnit.MINUTES);
         //Return to 'Token'
         return key;
     }

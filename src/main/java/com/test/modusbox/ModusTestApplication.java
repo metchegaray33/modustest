@@ -19,7 +19,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.retry.annotation.EnableRetry;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -28,7 +27,6 @@ import com.test.modusbox.model.DTOBuilder;
 import com.test.modusbox.model.dto.TransactionDTO;
 
 @SpringBootApplication
-@EnableAsync
 @EnableRetry
 public class ModusTestApplication {
 
@@ -51,7 +49,7 @@ public class ModusTestApplication {
         return (args) -> {
             List<TransactionDTO> transactionDTOList = buildTransactionListDTO(12);
             ListUtils.emptyIfNull(transactionDTOList).forEach(transactionDTO -> {
-               processTransaction(transactionDTO, restTemplate);
+                processTransaction(transactionDTO, restTemplate);
             });
 
         };

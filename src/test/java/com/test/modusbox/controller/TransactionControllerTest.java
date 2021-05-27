@@ -48,6 +48,9 @@ public class TransactionControllerTest {
     @Autowired
     private SupplierRepository supplierRepository;
 
+    @Autowired
+    TransactionRepository repository;
+
     @BeforeEach
     public void before() {
         transactionRepository.deleteAll();
@@ -67,7 +70,7 @@ public class TransactionControllerTest {
 
     @Test
     @Sql({ "/db/h2/populateSuppliersTest.sql" })
-    public void postTransaction_whenValidSupplierAndInternalError_shouldReturnError() throws Exception {
+    public void postTransaction_whenValidSupplier_shouldReturnErrorAndSouldSaveToDB() {
 
         TransactionDTO transactionDTO = DTOBuilder.buildTransactionDTO();
         ResponseEntity<String> resultToken =
@@ -84,16 +87,19 @@ public class TransactionControllerTest {
         //CALLING SERVICE FOR POSTING TRANSACTION
         ResponseEntity<String> result =
                 restTemplate.postForEntity(TRANSACTION_PATH_URL, entityTransaction, String.class);
+
         logger.info("POSTING transaction: {}", transactionDTO.getTransactionId() + " -" + result.getBody());
 
-        assertThat(HttpStatus.INTERNAL_SERVER_ERROR).isEqualTo(result.getStatusCode());
+        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
         assertThat(result.getBody()).contains("Internal Server Error");
+        assertThat(repository.count()).isEqualTo(1);
+
 
     }
 
     @Test
     @Sql({ "/db/h2/populateSuppliersTest.sql" })
-    public void postTransaction_whenNotValidSupplierAndInternalError_shouldReturnError() throws Exception {
+    public void postTransaction_whenValidSupplier_shouldReturnErrorAndSouldNotSaveToDB() {
 
         TransactionDTO transactionDTO = DTOBuilder.buildTransactionDTO();
         transactionDTO.getSupplier().setId(999);
@@ -112,8 +118,10 @@ public class TransactionControllerTest {
         ResponseEntity<String> result =
                 restTemplate.postForEntity(TRANSACTION_PATH_URL, entityTransaction, String.class);
 
-        assertThat(HttpStatus.INTERNAL_SERVER_ERROR).isEqualTo(result.getStatusCode());
+        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
         assertThat(result.getBody()).contains("Internal Server Error");
+        assertThat(repository.count()).isEqualTo(0);
+
 
     }
 }

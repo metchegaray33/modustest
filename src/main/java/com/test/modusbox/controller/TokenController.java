@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.test.modusbox.model.dto.TransactionDTO;
-import com.test.modusbox.service.TokenUtilService;
+import com.test.modusbox.service.TokenService;
 
 @RestController
 @RequestMapping(TOKEN_PATH)
 public class TokenController {
 
     @Autowired
-    private TokenUtilService tokenService;
+    private TokenService tokenService;
 
     @PostMapping("/token")
     public String generateToken(@RequestBody TransactionDTO transactionDTO) {
